@@ -15,29 +15,20 @@ public class HashmapTest {
         static String CurrentInput = "";
         static String[] acceptableinputs = {"r","p","s","ck","cv"};
 
-
-        static Scanner input = new Scanner(System.in);
+        static Scanner scannerInput = new Scanner(System.in);
         
+        static HashMap<String,Integer> employeeIDs = new HashMap<>();
+
         public static void main(String[] args) {
     
-        HashMap<String,Integer> employeeIDs = new HashMap<>();
-
         
-        
-        input.useLocale(Locale.US);
+        scannerInput.useLocale(Locale.US);
         
         System.out.println("current hashmap of " + hashmapName + " has the values " + employeeIDs);
         
         System.out.printf("r = replace, p = put, s = get size, ck = contains key, cv = contains value%nc = clear current hashmap, ie = check if map is empty, h = help%n");
 
-        while(true)
-        {
-            CurrentInput = input.nextLine();
-            if(CurrentInput.equalsIgnoreCase(inputHelp))
-            {
-                DisplayHelp();
-            }
-        }
+        Home();
     }
 
     static void DisplayHelp()
@@ -49,13 +40,32 @@ public class HashmapTest {
     {
         while(true)
         {
-            CurrentInput = input.nextLine();
-    
+            CurrentInput = scannerInput.nextLine();
+
             if(CurrentInput.equalsIgnoreCase(inputHelp))
             {
                 DisplayHelp();
             }
+
+            if(CurrentInput.equalsIgnoreCase(inputPut))
+            {
+                System.out.printf("Enter a string value%n");
+
+                String hashmapString = scannerInput.nextLine();
+
+                System.out.printf("%nEnter an integer%n");
+                int hashmapInt = scannerInput.nextInt();
+
+                employeeIDs.put(hashmapString, hashmapInt);
+                
+            }
         }
     }
+
+    static void HashMapPut(String name, int ID)
+    {
+        
+    }
+
 
 }
