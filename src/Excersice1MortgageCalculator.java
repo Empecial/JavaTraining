@@ -26,7 +26,7 @@ public class Excersice1MortgageCalculator {
         input.useLocale(Locale.US);
 
         do {
-            System.out.println("Enter a number between $1k-$1m");
+            System.out.printf("%nEnter a number between $1k-$1m%n");
 
             principal=input.nextFloat();
 
@@ -58,9 +58,9 @@ public class Excersice1MortgageCalculator {
 
         double mortgage = principal*(monthlyInterestRateDecimal * MonthlyInterestExponentResult) / (MonthlyInterestExponentResult-1);
 
-        System.out.printf("Ur mortgage will be $%.2f%n", mortgage);
+        System.out.printf("Ur mortgage will be $%.2f %n", mortgage);
 
-        System.out.println("Do you want to calculate again? y or n");
+        System.out.printf("%nDo you want to calculate again? y or n%n");
 
         String ChooseRestartCalculator = input.next();
 
@@ -71,10 +71,6 @@ public class Excersice1MortgageCalculator {
                 MortgageInput();
             }
 
-            //**IMPORTANT**
-            //if user enters "y" as the value for ChooseRestartCalculator first and then
-            //enters "n" as the value for ChooseRestartCalculator second, the program will somehow
-            //change the input into a "y" and run it again. 09/07/22
             if (ChooseRestartCalculator.equalsIgnoreCase("n")) 
             {
                 System.out.printf("%nExiting%n");
