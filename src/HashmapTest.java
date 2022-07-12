@@ -3,6 +3,8 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class HashmapTest {
+
+    //What are the variables valid for input by user?
         static String hashmapName = "employeeIDs";
         static String inputReplace = "r";
         static String inputPut = "p";
@@ -19,6 +21,7 @@ public class HashmapTest {
         
         static HashMap<String,Integer> employeeIDs = new HashMap<>();
 
+        static HashMapInteractions Hashinteract = new HashMapInteractions();
         public static void main(String[] args) {
     
         
@@ -56,8 +59,8 @@ public class HashmapTest {
                 System.out.printf("%nEnter an integer%n");
                 int hashmapInt = scannerInput.nextInt();
 
-                employeeIDs.put(hashmapString, hashmapInt);
-                
+                Hashinteract.HashMapPut(hashmapString, hashmapInt);       
+                System.out.println(Hashinteract.GetHashMap());         
             }
         }
     }

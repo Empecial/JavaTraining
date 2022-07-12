@@ -8,4 +8,9 @@ public class HashMapInteractions {
     {
         employeeIDs.put(name, age);
     }
+
+    public HashMap<String,Integer> GetHashMap()
+    {
+        return employeeIDs;
+    }
 }
