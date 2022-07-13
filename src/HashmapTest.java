@@ -1,74 +1,87 @@
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class HashmapTest {
 
     //What are the variables valid for input by user?
-        static String hashmapName = "employeeIDs";
-        static String inputReplace = "r";
-        static String inputPut = "p";
-        static String inputSize = "s";
-        static String inputContainsKey = "ck";
-        static String inputContainsValue = "cv";
-        static String inputClear = "c";
-        static String inputIsEmpty = "ie";
-        static String inputHelp = "h";
+        static final String hashmapName = "employeeIDs";
+        static final String inputReplace = "r";
+        static final String inputPut = "p";
+        static final String inputSize = "s";
+        static final String inputContainsKey = "ck";
+        static final String inputContainsValue = "cv";
+        static final String inputClear = "c";
+        static final String inputIsEmpty = "ie";
+        static final String inputHelp = "h";
+        static final String inputPrint = "pr";
         static String CurrentInput = "";
-        static String[] acceptableinputs = {"r","p","s","ck","cv"};
+        static final String[] acceptableinputs = {"r","p","s","ck","cv","c","ie","h","pr"};
 
         static Scanner scannerInput = new Scanner(System.in);
         
-        static HashMap<String,Integer> employeeIDs = new HashMap<>();
-
         static HashMapInteractions Hashinteract = new HashMapInteractions();
         public static void main(String[] args) {
     
         
         scannerInput.useLocale(Locale.US);
         
-        System.out.println("current hashmap of " + hashmapName + " has the values " + employeeIDs);
+        System.out.printf("Welcome to the employee ID database for Aperture Science Labs Inc. Co. Trademark.%nCurrent hashmap of name " + hashmapName + " has the values " + Hashinteract.GetHashMap() + "%n");
         
-        System.out.printf("r = replace, p = put, s = get size, ck = contains key, cv = contains value%nc = clear current hashmap, ie = check if map is empty, h = help%n");
+        DisplayHelp();
 
         Home();
     }
 
     static void DisplayHelp()
     {
-        System.out.printf("r = replace, p = put, s = get size, ck = contains key, cv = contains value%nc = clear current hashmap, ie = check if map is empty%n");
+        System.out.printf("%nValid inputs are: r = replace, p = put, s = get size, ck = contains key, cv = contains value%nc = clear current hashmap, ie = check if map is empty, h = help%n"+
+        "pr = print%n");
     }
 
     static void Home()
     {
         while(true)
         {
+
+            System.out.printf("%ninput: ");
             CurrentInput = scannerInput.nextLine();
 
-            if(CurrentInput.equalsIgnoreCase(inputHelp))
-            {
-                DisplayHelp();
+            switch (CurrentInput.toLowerCase()) {
+
+                case inputHelp: DisplayHelp();
+                    break;
+                
+                    case inputPut: HashMapPutValues();
+                    break;
+                    
+                    case inputPrint: PrintCurrentHashMap();
+                    break;
+                    
+                    default: DisplayHelp();
+                    break;
+                }
             }
+    }
+    
+    static void HashMapPutValues()
+    {
+        System.out.printf("Enter a string value%n");
+    
+        String hashmapString = scannerInput.nextLine();
+    
+        System.out.printf("%nEnter an integer%n");
+        int hashmapInt = scannerInput.nextInt();
+    
+        Hashinteract.HashMapPut(hashmapString, hashmapInt);
+        System.out.println("done");
+    }
 
-            if(CurrentInput.equalsIgnoreCase(inputPut))
-            {
-                System.out.printf("Enter a string value%n");
 
-                String hashmapString = scannerInput.nextLine();
-
-                System.out.printf("%nEnter an integer%n");
-                int hashmapInt = scannerInput.nextInt();
-
-                Hashinteract.HashMapPut(hashmapString, hashmapInt);       
-                System.out.println(Hashinteract.GetHashMap());         
-            }
+    static void PrintCurrentHashMap()
+    {
+        if(CurrentInput.equalsIgnoreCase(inputPrint))
+        {
+            System.out.println("current hashmap of " + hashmapName + " has the values " + Hashinteract.GetHashMap());
         }
     }
-
-    static void HashMapPut(String name, int ID)
-    {
-        
-    }
-
-
 }
