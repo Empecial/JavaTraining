@@ -42,8 +42,6 @@ public class HashmapTest {
     {
         while(true)
         {
-
-            System.out.printf("%ninput: ");
             CurrentInput = scannerInput.nextLine();
 
             switch (CurrentInput.toLowerCase()) {
@@ -56,7 +54,10 @@ public class HashmapTest {
                     
                     case inputPrint: PrintCurrentHashMap();
                     break;
-                    
+
+                    case inputContainsKey: ContainsKeyHashMap();
+                    break;
+
                     default: DisplayHelp();
                     break;
                 }
@@ -65,17 +66,27 @@ public class HashmapTest {
     
     static void HashMapPutValues()
     {
-        System.out.printf("Enter a string value%n");
+        System.out.printf("Enter an employee name%n");
     
-        String hashmapString = scannerInput.nextLine();
+        String hashmapString = "";
+        
+        try {
+            hashmapString = scannerInput.nextLine();
+        } catch (Exception e) {
+            System.out.printf("%nWrong input type - Not a string%n");
+        }
     
-        System.out.printf("%nEnter an integer%n");
-        int hashmapInt = scannerInput.nextInt();
+        System.out.printf("%nEnter an employee ID number%n");
+        int hashmapInt = 0;
+        
+        try {
+            hashmapInt = scannerInput.nextInt();
+        } catch (Exception e) {
+            System.out.printf("%nWrong input type - Not an int%n");
+        }
     
         Hashinteract.HashMapPut(hashmapString, hashmapInt);
-        System.out.println("done");
     }
-
 
     static void PrintCurrentHashMap()
     {
@@ -83,5 +94,13 @@ public class HashmapTest {
         {
             System.out.println("current hashmap of " + hashmapName + " has the values " + Hashinteract.GetHashMap());
         }
+    }
+
+    static void ContainsKeyHashMap()
+    {
+        System.out.printf("What name do you want to check for?%n");
+        String KeySearch = scannerInput.nextLine();
+
+        Hashinteract.HashMapContainsKey(KeySearch);
     }
 }
