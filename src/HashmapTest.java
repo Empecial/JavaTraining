@@ -49,21 +49,31 @@ public class HashmapTest {
                 case inputHelp: DisplayHelp();
                     break;
                 
-                    case inputPut: HashMapPutValues();
+                case inputPut: HashMapPutValues();
                     break;
                     
-                    case inputPrint: PrintCurrentHashMap();
+                case inputPrint: PrintCurrentHashMap();
                     break;
 
-                    case inputContainsKey: ContainsKeyHashMap();
+                case inputContainsKey: ContainsKeyHashMap();
                     break;
 
-                    default: DisplayHelp();
+                case inputClear: HashMapClear();
                     break;
-                }
+
+                default: DisplayHelp();
+                    break;
             }
+        }
+        
     }
     
+    static void HashMapClear()
+    {
+    Hashinteract.employeeIDs.clear();
+    System.out.println("Hashmap cleared");
+    }
+
     static void HashMapPutValues()
     {
         System.out.printf("Enter an employee name%n");
@@ -72,6 +82,7 @@ public class HashmapTest {
         
         try {
             hashmapString = scannerInput.nextLine();
+
         } catch (Exception e) {
             System.out.printf("%nWrong input type - Not a string%n");
         }
@@ -84,7 +95,7 @@ public class HashmapTest {
         } catch (Exception e) {
             System.out.printf("%nWrong input type - Not an int%n");
         }
-    
+
         Hashinteract.HashMapPut(hashmapString, hashmapInt);
     }
 
