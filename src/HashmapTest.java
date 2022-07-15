@@ -1,5 +1,6 @@
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class HashmapTest {
 
@@ -40,9 +41,9 @@ public class HashmapTest {
 
     static void Home()
     {
-        while(true)
+        while (true)
         {
-            System.out.println("Input: ");
+            System.out.print("Input: ");
 
             CurrentInput = scannerInput.nextLine();
 
@@ -70,7 +71,6 @@ public class HashmapTest {
                     break;
             }
         }
-        
     }
     
     static void HashMapClear()
@@ -81,25 +81,38 @@ public class HashmapTest {
 
     static void HashMapPutValues()
     {
-        System.out.printf("Enter an employee name%n");
-    
         String hashmapString = "";
         
-        try {
-            hashmapString = scannerInput.nextLine();
+        System.out.printf("Enter an employee name%n");
+        hashmapString = scannerInput.nextLine();
 
-        } catch (Exception e) {
-            System.out.printf("%nWrong input type - Not a string%n");
+        while (true)
+        {
+            if(Pattern.matches("[a-zA-Z]+",hashmapString))
+            {
+                System.out.printf("%nCorrect input type%n");
+                break;
+            }
+            else
+            {
+                System.out.printf("%nWrong input type - Not a string%nTry again%n");
+                hashmapString = scannerInput.nextLine();
+            }
         }
-    
+
         System.out.printf("%nEnter an employee ID number%n");
         int hashmapInt = 0;
-        
-        try {
-            hashmapInt = scannerInput.nextInt();
-        } catch (Exception e) {
-            System.out.printf("%nWrong input type - Not an int%n");
-        }
+
+        while(true)
+        {
+            try {
+                hashmapInt = scannerInput.nextInt();
+            } catch (Exception e) {
+                System.out.printf("%nWrong input type - Not an int%nTry again");
+                hashmapInt = scannerInput.nextInt();
+            }
+            break;  
+        } 
 
         Hashinteract.HashMapPut(hashmapString, hashmapInt);
     }
