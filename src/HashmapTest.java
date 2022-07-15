@@ -42,6 +42,8 @@ public class HashmapTest {
     {
         while(true)
         {
+            System.out.println("Input: ");
+
             CurrentInput = scannerInput.nextLine();
 
             switch (CurrentInput.toLowerCase()) {
@@ -57,11 +59,14 @@ public class HashmapTest {
 
                 case inputContainsKey: ContainsKeyHashMap();
                     break;
+                
+                case inputContainsValue: ContainsValueHashMap();
+                break;
 
                 case inputClear: HashMapClear();
                     break;
 
-                default: DisplayHelp();
+                default: ;
                     break;
             }
         }
@@ -113,5 +118,13 @@ public class HashmapTest {
         String KeySearch = scannerInput.nextLine();
 
         Hashinteract.HashMapContainsKey(KeySearch);
+    }
+
+    static void ContainsValueHashMap()
+    {
+    System.out.println("What employee ID do you want to check for?");
+    int ValueSearch = scannerInput.nextInt();
+
+    Hashinteract.HashMapContainsValue(ValueSearch);
     }
 }
