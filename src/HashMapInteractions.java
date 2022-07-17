@@ -1,12 +1,16 @@
+import java.security.Identity;
 import java.util.HashMap;
 
 public class HashMapInteractions {
     
     HashMap<String,Integer> employeeIDs = new HashMap<>();
     
-    public void HashMapPut(String name, int age)
+    public void HashMapPut(String name, String ID)
     {
-        employeeIDs.put(name, age);
+
+        int IDint = Integer.parseInt(ID);
+
+        employeeIDs.put(name, IDint);
     }
 
     public HashMap<String,Integer> GetHashMap()
@@ -26,5 +30,10 @@ public class HashMapInteractions {
         
         else
             System.out.println("Specified employee ID doesn't exist");
+    }
+
+    public void HashMapIsempty()
+    {
+        System.out.println(employeeIDs.isEmpty());
     }
 }

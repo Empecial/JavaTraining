@@ -1,5 +1,6 @@
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class HashmapTest {
@@ -67,6 +68,9 @@ public class HashmapTest {
                 case inputClear: HashMapClear();
                     break;
 
+                case inputIsEmpty: IsEmptyHashMap();
+                break;
+
                 default: ;
                     break;
             }
@@ -79,16 +83,21 @@ public class HashmapTest {
     System.out.println("Hashmap cleared");
     }
 
+    static void IsEmptyHashMap()
+    {
+        Hashinteract.HashMapIsempty();
+    }
+
     static void HashMapPutValues()
     {
-        String hashmapString = "";
+        String hashmapName;
         
         System.out.printf("Enter an employee name%n");
-        hashmapString = scannerInput.nextLine();
+        hashmapName = scannerInput.nextLine();
 
         while (true)
         {
-            if(Pattern.matches("[a-zA-Z]+",hashmapString))
+            if(Pattern.matches("[a-zA-Z]+",hashmapName))
             {
                 System.out.printf("%nCorrect input type%n");
                 break;
@@ -96,26 +105,50 @@ public class HashmapTest {
             else
             {
                 System.out.printf("%nWrong input type - Not a string%nTry again%n");
-                hashmapString = scannerInput.nextLine();
+                hashmapName = scannerInput.nextLine();
             }
         }
 
         System.out.printf("%nEnter an employee ID number%n");
-        int hashmapInt = 0;
+        String hashmapIDint = scannerInput.nextLine();
 
         while(true)
         {
-            try {
-                hashmapInt = scannerInput.nextInt();
-            } catch (Exception e) {
-                System.out.printf("%nWrong input type - Not an int%nTry again");
-                hashmapInt = scannerInput.nextInt();
+            if(OnlyDigits(hashmapIDint))
+            {
+                System.out.println("Correct input type");
+                break;
             }
-            break;  
+            else
+            {
+            System.out.printf("Wrong input type - Not an int%nTry again%n");
+            hashmapIDint = scannerInput.nextLine();
+            }            
         } 
 
-        Hashinteract.HashMapPut(hashmapString, hashmapInt);
+        Hashinteract.HashMapPut(hashmapName, hashmapIDint);
     }
+
+
+    static boolean OnlyDigits(String inputString)
+    {
+        String regex = "[0-9]+";
+
+        Pattern inputPattern = Pattern.compile(regex);
+
+       //How do you check if the string is empty?
+       if(inputPattern == null)
+       {
+            return false;
+       }
+       
+       //How would you check if the input only has digits?
+       Matcher inputMatcher = inputPattern.matcher(inputString);
+
+       //How would you display after checking if the string only has digits or not?
+       return inputMatcher.matches();
+    }
+
 
     static void PrintCurrentHashMap()
     {
