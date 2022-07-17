@@ -168,7 +168,7 @@ public class HashmapTest {
 
     static void ContainsValueHashMap()
     {
-    System.out.println("What employee ID do you want to check for?");
+    System.out.println("What employee ID do you want to check if it exists?");
     int ValueSearch = scannerInput.nextInt();
 
     Hashinteract.HashMapContainsValue(ValueSearch);
