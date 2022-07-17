@@ -12,7 +12,7 @@ public class HashMapInteractions {
         employeeIDs.put(name, IDint);
     }
 
-    public HashMap<String,Integer> GetHashMap()
+    public HashMap<String,Integer> HashMapGet()
     {
         return employeeIDs;
     }
