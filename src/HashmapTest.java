@@ -27,7 +27,7 @@ public class HashmapTest {
         
         scannerInput.useLocale(Locale.US);
         
-        System.out.printf("Welcome to the employee ID database for Aperture Science Labs Inc. Co. Trademark.%nCurrent hashmap of name " + hashmapName + " has the values " + Hashinteract.GetHashMap() + "%n");
+        System.out.printf("Welcome to the employee ID database for Aperture Science Labs Inc. Co. Trademark.%nCurrent hashmap of name " + hashmapName + " has the values " + Hashinteract.HashMapGet() + "%n");
         
         DisplayHelp();
 
@@ -53,7 +53,7 @@ public class HashmapTest {
                 case inputHelp: DisplayHelp();
                     break;
                 
-                case inputPut: HashMapPutValues();
+                case inputPut: PutValuesHashMap();
                     break;
                     
                 case inputPrint: PrintCurrentHashMap();
@@ -65,10 +65,13 @@ public class HashmapTest {
                 case inputContainsValue: ContainsValueHashMap();
                 break;
 
-                case inputClear: HashMapClear();
+                case inputClear: ClearHashMap();
                     break;
 
                 case inputIsEmpty: IsEmptyHashMap();
+                break;
+
+                case inputSize: SizeHashMap();
                 break;
 
                 default: ;
@@ -77,10 +80,15 @@ public class HashmapTest {
         }
     }
     
-    static void HashMapClear()
+    static void ClearHashMap()
     {
     Hashinteract.employeeIDs.clear();
     System.out.println("Hashmap cleared");
+    }
+
+    static void SizeHashMap()
+    {
+        System.out.println("The size of hashmap: " + hashmapName.toUpperCase() + " is: " + Hashinteract.employeeIDs.size());
     }
 
     static void IsEmptyHashMap()
@@ -88,7 +96,7 @@ public class HashmapTest {
         Hashinteract.HashMapIsempty();
     }
 
-    static void HashMapPutValues()
+    static void PutValuesHashMap()
     {
         String hashmapName;
         
@@ -154,7 +162,7 @@ public class HashmapTest {
     {
         if(CurrentInput.equalsIgnoreCase(inputPrint))
         {
-            System.out.println("current hashmap of " + hashmapName + " has the values " + Hashinteract.GetHashMap());
+            System.out.println("current hashmap of " + hashmapName + " has the values " + Hashinteract.HashMapGet());
         }
     }
 
