@@ -96,7 +96,7 @@ public class HashmapTest {
 
         int IDfromEmployeeName = Hashinteract.HashMapGetValue(employeeNameForID);
 
-        System.out.println("The employee " + employeeNameForID + " has the ID of " + IDfromEmployeeName);
+        System.out.println("The employee - " + employeeNameForID.toUpperCase() + " - has the ID of " + IDfromEmployeeName);
     }
 
     static void ReplaceHashMap()
