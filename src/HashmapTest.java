@@ -16,6 +16,8 @@ public class HashmapTest {
         static final String inputIsEmpty = "ie";
         static final String inputHelp = "h";
         static final String inputPrint = "pr";
+        static final String inputGet = "g";
+        static final String inputRemove = "rm";
         static String CurrentInput = "";
         static final String[] acceptableinputs = {"r","p","s","ck","cv","c","ie","h","pr"};
 
@@ -63,16 +65,22 @@ public class HashmapTest {
                     break;
                 
                 case inputContainsValue: ContainsValueHashMap();
-                break;
+                    break;
 
                 case inputClear: ClearHashMap();
                     break;
 
                 case inputIsEmpty: IsEmptyHashMap();
-                break;
+                    break;
 
                 case inputSize: SizeHashMap();
-                break;
+                    break;
+
+                case inputReplace: ReplaceHashMap();
+                    break;
+
+                case inputGet: GetHashMap();
+                    break;
 
                 default: ;
                     break;
@@ -80,6 +88,22 @@ public class HashmapTest {
         }
     }
     
+    static void GetHashMap()
+    {
+        System.out.println("Which employee's ID number do you need?");
+
+        String employeeNameForID = scannerInput.nextLine();
+
+        int IDfromEmployeeName = Hashinteract.HashMapGetValue(employeeNameForID);
+
+        System.out.println("The employee - " + employeeNameForID.toUpperCase() + " - has the ID of " + IDfromEmployeeName);
+    }
+
+    static void ReplaceHashMap()
+    {
+        
+    }
+
     static void ClearHashMap()
     {
     Hashinteract.employeeIDs.clear();
