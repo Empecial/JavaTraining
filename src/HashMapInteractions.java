@@ -10,13 +10,14 @@ public class HashMapInteractions {
         int IDint = Integer.parseInt(ID);
 
         employeeIDs.put(name, IDint);
-    }
 
+    }
+    
     public HashMap<String,Integer> HashMapGet()
     {
         return employeeIDs;
     }
-
+    
     public void HashMapContainsKey(String key)
     {
         System.out.println(employeeIDs.containsKey(key));        
@@ -34,5 +35,10 @@ public class HashMapInteractions {
     public void HashMapIsempty()
     {
         System.out.println(employeeIDs.isEmpty());
+    }
+
+    public int HashMapGetValue(String NameForID)
+    {
+        return employeeIDs.get(NameForID);
     }
 }
