@@ -4,13 +4,20 @@ public class HashMapInteractions {
     
     HashMap<String,Integer> employeeIDs = new HashMap<>();
     
-    public void HashMapPut(String name, String ID)
+    public boolean HashMapCheckIfValueExists(String name)
     {
+        if(employeeIDs.containsKey(name))
+            return false;
 
+        else
+            return true;
+    }
+
+    public void HashMapPutIfAbsent(String name, String ID)
+    {
         int IDint = Integer.parseInt(ID);
-
+        
         employeeIDs.put(name, IDint);
-
     }
     
     public HashMap<String,Integer> HashMapGet()
