@@ -1,5 +1,6 @@
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.jar.Attributes.Name;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -129,11 +130,24 @@ public class HashmapTest {
 
         while (true)
         {
-            if(Pattern.matches("[a-zA-Z]+",hashmapName))
-            {
-                System.out.printf("%nCorrect input type%n");
-                break;
+            //TODO make the line below check for whitespace
+            if(Pattern.matches("[a-zA-Z]+",hashmapName)) {
+
+                //How would you check if the specified name already exists in employeeIDs?
+                if(Hashinteract.employeeIDs.containsKey(hashmapName))
+                {
+                    System.out.printf("%nA user with that name already exists%nChoose another%n");
+                    hashmapName = scannerInput.nextLine();
+                }
+                 //How would you check if the specified name doesn't exist in employeeIDs?
+                else if(!Hashinteract.employeeIDs.containsKey(hashmapName))
+                {
+                    System.out.printf("%nCorrect input type - User doesn't already exist%n");
+                    break;
+                }
             }
+
+            //What should happen if the input isnt a string?
             else
             {
                 System.out.printf("%nWrong input type - Not a string%nTry again%n");
@@ -148,37 +162,51 @@ public class HashmapTest {
         {
             if(OnlyDigits(hashmapIDint))
             {
-                System.out.println("Correct input type");
-                break;
+                if(!Hashinteract.employeeIDs.containsValue(Integer.parseInt(hashmapIDint)))
+                {
+                    System.out.println("Correct input type - Employee ID doesn't already exist");
+                    break;
+                }
+                else
+                {
+                    System.out.printf("A user with that employee ID already exists%nChoose another%n");
+                    hashmapIDint = scannerInput.nextLine();
+                }
             }
             else
             {
-            System.out.printf("Wrong input type - Not an int%nTry again%n");
-            hashmapIDint = scannerInput.nextLine();
+                System.out.printf("Wrong input type - Not an int%nTry again%n");
+                hashmapIDint = scannerInput.nextLine();
             }            
         } 
 
-        Hashinteract.HashMapPut(hashmapName, hashmapIDint);
+        Hashinteract.HashMapPutIfAbsent(hashmapName, hashmapIDint);
     }
-
 
     static boolean OnlyDigits(String inputString)
     {
-        String regex = "[0-9]+";
+    //     String regex = "[0-9]+";
 
-        Pattern inputPattern = Pattern.compile(regex);
+    //     Pattern inputPattern = Pattern.compile(regex);
 
-       //How do you check if the string is empty?
-       if(inputPattern == null)
-       {
-            return false;
-       }
+    //    //How do you check if the string is empty?
+    //    if(inputPattern == null)
+    //    {
+    //         return false;
+    //    }
        
        //How would you check if the input only has digits?
-       Matcher inputMatcher = inputPattern.matcher(inputString);
+       //Matcher inputMatcher = inputPattern.matcher(inputString);
 
        //How would you display after checking if the string only has digits or not?
-       return inputMatcher.matches();
+       //return inputMatcher.matches();
+
+       if(Pattern.matches("[0-9]+", inputString))
+       {
+            return true;
+       }
+       else
+        return false;
     }
 
 
