@@ -136,7 +136,7 @@ public class HashmapTest {
 
                         else
                         {
-                            System.out.println("Employee ID exists");
+                            System.out.println("Employee ID number changed");
                             break;
                         }
                     }
