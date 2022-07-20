@@ -13,11 +13,20 @@ public class HashMapInteractions {
             return true;
     }
 
-    public void HashMapPutIfAbsent(String name, String ID)
+    public void HashMapPut(String name, String ID)
     {
         int IDint = Integer.parseInt(ID);
         
         employeeIDs.put(name, IDint);
+    }
+
+    public void HashMapReplaceValue(String name, String ReplaceValue)
+    {
+        int ReplaceValueInt = Integer.parseInt(ReplaceValue);
+
+        employeeIDs.replace(name, ReplaceValueInt);
+
+        System.out.println("The user: " + name.toUpperCase() + " has the new employee ID of " + ReplaceValueInt);
     }
     
     public HashMap<String,Integer> HashMapGet()

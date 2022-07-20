@@ -1,7 +1,5 @@
 import java.util.Locale;
 import java.util.Scanner;
-import java.util.jar.Attributes.Name;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class HashmapTest {
@@ -102,13 +100,61 @@ public class HashmapTest {
 
     static void ReplaceHashMap()
     {
+        String employeeName = "";
         
-    }
+        System.out.printf("Enter an employee name%n");
+
+        employeeName = scannerInput.nextLine();
+        
+        while(true)
+        {
+            if(!Hashinteract.employeeIDs.containsKey(employeeName))
+            {
+                System.out.println("This user doesn't exist - Choose a new user");
+                employeeName = scannerInput.nextLine();
+            }
+                else
+                {
+                    System.out.println("User exists");
+                    break;
+                }
+        }
+                String EmployeeIDReplace = "";
+        
+                System.out.printf("Enter the new employee ID of "+ employeeName + "%n");
+                EmployeeIDReplace = scannerInput.nextLine();
+                
+                while(true)
+                {
+                    if(OnlyDigits(EmployeeIDReplace))
+                    {
+                        if(Hashinteract.employeeIDs.containsValue(Integer.parseInt(EmployeeIDReplace)))
+                        {
+                            System.out.println("This employee ID already exists - Choose a new ID");
+                            EmployeeIDReplace = scannerInput.nextLine();
+                        }
+
+                        else
+                        {
+                            System.out.println("Employee ID exists");
+                            break;
+                        }
+                    }
+
+                    else
+                    {
+                        System.out.println("Enter a valid ID - No strings allowed");
+                        EmployeeIDReplace = scannerInput.nextLine();
+                    }
+                }
+                
+                Hashinteract.HashMapReplaceValue(employeeName, EmployeeIDReplace);
+            }
 
     static void ClearHashMap()
     {
-    Hashinteract.employeeIDs.clear();
-    System.out.println("Hashmap cleared");
+        Hashinteract.employeeIDs.clear();
+        System.out.println("Hashmap cleared");
     }
 
     static void SizeHashMap()
@@ -180,7 +226,7 @@ public class HashmapTest {
             }            
         } 
 
-        Hashinteract.HashMapPutIfAbsent(hashmapName, hashmapIDint);
+        Hashinteract.HashMapPut(hashmapName, hashmapIDint);
     }
 
     static boolean OnlyDigits(String inputString)
