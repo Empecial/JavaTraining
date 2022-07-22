@@ -50,11 +50,17 @@ public class HashMapInteractions {
 
     public void HashMapIsempty()
     {
-        System.out.println(employeeIDs.isEmpty());
+        System.out.println("Current hashmap is empty: " + employeeIDs.isEmpty());
     }
 
     public int HashMapGetValue(String NameForID)
     {
         return employeeIDs.get(NameForID);
+    }
+
+    public void HashMapRemove(String EmployeeRemove)
+    {
+        String DeletedEmployeeID =  employeeIDs.remove(EmployeeRemove).toString();
+        System.out.println("Deleted specified employee with the ID - " + DeletedEmployeeID + " from EmployeeIDs");
     }
 }

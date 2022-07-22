@@ -81,6 +81,9 @@ public class HashmapTest {
                 case inputGet: GetHashMap();
                     break;
 
+                case inputRemove: RemoveHashMap();
+                    break;
+
                 default: ;
                     break;
             }
@@ -255,7 +258,6 @@ public class HashmapTest {
         return false;
     }
 
-
     static void PrintCurrentHashMap()
     {
         if(CurrentInput.equalsIgnoreCase(inputPrint))
@@ -274,9 +276,42 @@ public class HashmapTest {
 
     static void ContainsValueHashMap()
     {
-    System.out.println("What employee ID do you want to check if it exists?");
-    int ValueSearch = scannerInput.nextInt();
+        System.out.println("What employee ID do you want to check if it exists?");
+        int ValueSearch = scannerInput.nextInt();
 
-    Hashinteract.HashMapContainsValue(ValueSearch);
+        Hashinteract.HashMapContainsValue(ValueSearch);
+    }
+
+    static void RemoveHashMap()
+    {
+
+        String removeEmployee = "";
+
+        while(true)
+        {
+            System.out.println("Which Employee shall be removed?\nType in an Employee name");
+
+            removeEmployee = scannerInput.nextLine();
+
+            if(Pattern.matches("[a-zA-Z]+", removeEmployee))
+            {
+                if(Hashinteract.employeeIDs.containsKey(removeEmployee))
+                {
+                    System.out.println("Valid employee - Removed");
+                    break;
+                }
+                else
+                {
+                    System.out.println("Specified employee does not exist\nEnter new employee name");
+                    removeEmployee = scannerInput.nextLine();
+                }
+            }
+            else
+            {
+                System.out.println("Specified employee name is not valid - Only strings");
+                removeEmployee = scannerInput.nextLine();
+            }
+        }
+        Hashinteract.HashMapRemove(removeEmployee);
     }
 }
