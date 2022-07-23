@@ -234,22 +234,7 @@ public class HashmapTest {
 
     static boolean OnlyDigits(String inputString)
     {
-    //     String regex = "[0-9]+";
-
-    //     Pattern inputPattern = Pattern.compile(regex);
-
-    //    //How do you check if the string is empty?
-    //    if(inputPattern == null)
-    //    {
-    //         return false;
-    //    }
-       
-       //How would you check if the input only has digits?
-       //Matcher inputMatcher = inputPattern.matcher(inputString);
-
-       //How would you display after checking if the string only has digits or not?
-       //return inputMatcher.matches();
-
+    //How would you check if the input only has digits?
        if(Pattern.matches("[0-9]+", inputString))
        {
             return true;
