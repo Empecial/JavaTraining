@@ -17,6 +17,7 @@ public class HashmapTest {
         static final String inputPrint = "pr";
         static final String inputGet = "g";
         static final String inputRemove = "rm";
+        static final String inputQuit = "q";
         static String CurrentInput = "";
         static final String[] acceptableinputs = {"r","p","s","ck","cv","c","ie","h","pr"};
 
@@ -234,7 +235,7 @@ public class HashmapTest {
 
     static boolean OnlyDigits(String inputString)
     {
-    //How would you check if the input only has digits?
+       //How would you check if the input only has digits?
        if(Pattern.matches("[0-9]+", inputString))
        {
             return true;
@@ -268,15 +269,20 @@ public class HashmapTest {
     }
 
     static void RemoveHashMap()
-    {
-
+    {                                   
         String removeEmployee = "";
+
+        System.out.println("\nWhich Employee shall be removed?\nType in an Employee name");
+
+        removeEmployee = scannerInput.nextLine();
 
         while(true)
         {
-            System.out.println("Which Employee shall be removed?\nType in an Employee name");
-
-            removeEmployee = scannerInput.nextLine();
+            if(removeEmployee.equalsIgnoreCase(inputQuit))
+            {
+                System.out.printf("%nQuitting to Home...%n");
+                Home();
+            }
 
             if(Pattern.matches("[a-zA-Z]+", removeEmployee))
             {
@@ -287,13 +293,13 @@ public class HashmapTest {
                 }
                 else
                 {
-                    System.out.println("Specified employee does not exist\nEnter new employee name");
+                    System.out.println("\nSpecified employee does not exist\nEnter new employee name");
                     removeEmployee = scannerInput.nextLine();
                 }
             }
             else
             {
-                System.out.println("Specified employee name is not valid - Only strings");
+                System.out.println("\nSpecified employee name is not valid - Only strings");
                 removeEmployee = scannerInput.nextLine();
             }
         }
