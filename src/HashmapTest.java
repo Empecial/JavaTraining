@@ -263,9 +263,30 @@ public class HashmapTest {
     static void ContainsValueHashMap()
     {
         System.out.println("What employee ID do you want to check if it exists?");
-        int ValueSearch = scannerInput.nextInt();
+        
+        String ValueSearchString = scannerInput.nextLine();
 
-        Hashinteract.HashMapContainsValue(ValueSearch);
+        while(true)
+        {
+            if(OnlyDigits(ValueSearchString))
+            {
+                if(!Hashinteract.employeeIDs.containsValue(Integer.parseInt(ValueSearchString)))
+                {
+                    System.out.printf("%nSpecified employee ID doesn't exist%nTry again%n");
+                    ValueSearchString = scannerInput.nextLine();
+                }
+                else
+                {
+                    System.out.printf("%nCorrect input - ID exists");
+                    break;
+                }
+            }
+            else
+            {                                               
+                System.out.printf("%nInput needs to be an int - Try again");
+                ValueSearchString = scannerInput.nextLine();
+            }
+        }
     }
 
     static void RemoveHashMap()

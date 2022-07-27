@@ -39,15 +39,6 @@ public class HashMapInteractions {
         System.out.println(employeeIDs.containsKey(key));        
     }
 
-    public void HashMapContainsValue(int value)
-    {
-        if(employeeIDs.containsValue(value))
-            System.out.println("Specified employee ID exists");
-        
-        else
-            System.out.println("Specified employee ID doesn't exist");
-    }
-
     public void HashMapIsempty()
     {
         System.out.println("Current hashmap is empty: " + employeeIDs.isEmpty());
