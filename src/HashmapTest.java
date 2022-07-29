@@ -246,10 +246,7 @@ public class HashmapTest {
 
     static void PrintCurrentHashMap()
     {
-        if(CurrentInput.equalsIgnoreCase(inputPrint))
-        {
-            System.out.println("current hashmap of " + hashmapName + " has the values " + Hashinteract.HashMapGet());
-        }
+        System.out.println("current hashmap " + hashmapName + " has the values " + Hashinteract.HashMapGet());
     }
 
     static void ContainsKeyHashMap()
