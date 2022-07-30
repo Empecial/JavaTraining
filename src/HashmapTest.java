@@ -269,12 +269,12 @@ public class HashmapTest {
             {
                 if(!Hashinteract.employeeIDs.containsValue(Integer.parseInt(ValueSearchString)))
                 {
-                    System.out.printf("%nSpecified employee ID doesn't exist%nTry again%n");
+                    System.out.printf("%nSpecified employee ID doesn't exist%nCurrent ID's are:" + Hashinteract.employeeIDs.values() + "%nTry again%n");
                     ValueSearchString = scannerInput.nextLine();
                 }
                 else
                 {
-                    System.out.printf("%nCorrect input - ID exists");
+                    System.out.printf("%nCorrect input - ID exists: True");
                     break;
                 }
             }
