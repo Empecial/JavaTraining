@@ -96,8 +96,30 @@ public class HashmapTest {
         System.out.println("Which employee's ID number do you need?");
 
         String employeeNameForID = scannerInput.nextLine();
+        int IDfromEmployeeName;
 
-        int IDfromEmployeeName = Hashinteract.HashMapGetValue(employeeNameForID);
+        while(true)
+        {
+            if(Pattern.matches("[a-zA-Z]+", employeeNameForID))
+            {
+                if(Hashinteract.employeeIDs.containsKey(employeeNameForID)) 
+                {
+                    IDfromEmployeeName = Hashinteract.HashMapGetValue(employeeNameForID);
+                    System.out.printf("Correct input type - string%n");
+                    break;
+                }
+                else
+                {
+                    System.out.printf("Specified name doesn't exist in the hashmap - Try again%n");
+                    employeeNameForID = scannerInput.nextLine();
+                }
+            }
+            else
+            {
+                System.out.printf("Input was not a string. Try again%n");
+                employeeNameForID = scannerInput.nextLine();
+            }
+        }
 
         System.out.println("The employee - " + employeeNameForID.toUpperCase() + " - has the ID of " + IDfromEmployeeName);
     }
@@ -298,8 +320,7 @@ public class HashmapTest {
         {
             if(removeEmployee.equalsIgnoreCase(inputQuit))
             {
-                System.out.printf("%nQuitting to Home...%n");
-                Home();
+                Quit();
             }
 
             if(Pattern.matches("[a-zA-Z]+", removeEmployee))
@@ -322,5 +343,11 @@ public class HashmapTest {
             }
         }
         Hashinteract.HashMapRemove(removeEmployee);
+    }
+
+    static void Quit()
+    {
+        System.out.printf("%nQuitting to Home...%n");
+        Home();
     }
 }
