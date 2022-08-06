@@ -106,6 +106,7 @@ public class HashmapTest {
                 {
                     IDfromEmployeeName = Hashinteract.HashMapGetValue(employeeNameForID);
                     System.out.printf("Correct input type - string%n");
+                    System.out.printf("Employee exists - fetching%n");
                     break;
                 }
                 else
@@ -134,16 +135,24 @@ public class HashmapTest {
         
         while(true)
         {
-            if(!Hashinteract.employeeIDs.containsKey(employeeName))
+            if(Pattern.matches("[a-zA-Z+]+", employeeName))
             {
-                System.out.println("This user doesn't exist - Choose a new user");
-                employeeName = scannerInput.nextLine();
-            }
+                if(!Hashinteract.employeeIDs.containsKey(employeeName))
+                {
+                    System.out.println("This user doesn't exist - Choose a new user");
+                    employeeName = scannerInput.nextLine();
+                }
                 else
                 {
-                    System.out.println("User exists");
+                    System.out.println("\nUser exists\nContinuing\n");
                     break;
                 }
+            }
+            else
+            {
+                System.out.printf("Input was not a string - Try again%n");
+                employeeName = scannerInput.nextLine();
+            }
         }
                 String EmployeeIDReplace = "";
         
@@ -159,17 +168,15 @@ public class HashmapTest {
                             System.out.println("This employee ID already exists - Choose a new ID");
                             EmployeeIDReplace = scannerInput.nextLine();
                         }
-
                         else
                         {
-                            System.out.println("Employee ID number changed");
+                            System.out.println("Employee ID changed");
                             break;
                         }
                     }
-
                     else
                     {
-                        System.out.println("Enter a valid ID - No strings allowed");
+                        System.out.println("Enter a valid ID - Integer values");
                         EmployeeIDReplace = scannerInput.nextLine();
                     }
                 }
