@@ -101,6 +101,11 @@ public class HashmapTest {
 
         while(true)
         {
+            if(employeeNameForID.equalsIgnoreCase(inputQuit))
+            {
+                Quit();
+            }
+
             if(Pattern.matches("[a-zA-Z]+", employeeNameForID))
             {
                 if(Hashinteract.employeeIDs.containsKey(employeeNameForID)) 
@@ -130,12 +135,17 @@ public class HashmapTest {
     {
         String employeeName = "";
         
-        System.out.printf("Enter an employee name%n");
+        System.out.printf("Enter an employee name. Press Q to quit%n");
 
         employeeName = scannerInput.nextLine();
         
         while(true)
         {
+            if(employeeName.equalsIgnoreCase(inputQuit))
+            {
+                Quit();
+            }
+
             if(Pattern.matches("[a-zA-Z+]+", employeeName))
             {
                 if(!Hashinteract.employeeIDs.containsKey(employeeName))
@@ -162,6 +172,11 @@ public class HashmapTest {
                 
                 while(true)
                 {
+                    if(EmployeeIDReplace.equalsIgnoreCase(inputQuit))
+                    {
+                        Quit();
+                    }
+
                     if(OnlyDigits(EmployeeIDReplace))
                     {
                         if(Hashinteract.employeeIDs.containsValue(Integer.parseInt(EmployeeIDReplace)))
@@ -205,11 +220,16 @@ public class HashmapTest {
     {
         String hashmapName;
         
-        System.out.printf("Enter an employee name%n");
+        System.out.printf("Enter an employee name. Press Q to quit%n");
         hashmapName = scannerInput.nextLine();
 
         while (true)
         {
+            if(hashmapName.equalsIgnoreCase(inputQuit))
+            {
+                Quit();
+            }
+
             //Which regex pattern is needed for checking all the letters but no whitespaces?
             if(Pattern.matches("[a-zA-Z]+\\S",hashmapName)) {
 
@@ -230,7 +250,7 @@ public class HashmapTest {
             //What should happen if the input isnt a string?
             else
             {
-                System.out.printf("%nWrong input type - Not a string%nCheck for whitespace%nTry again%n");
+                System.out.printf("%nPossible problems: Wrong input type - Not a string%nCheck for whitespace%n2 letter minimum%nTry again%n");
                 hashmapName = scannerInput.nextLine();
             }
         }
@@ -240,6 +260,11 @@ public class HashmapTest {
 
         while(true)
         {
+            if(hashmapIDint.equalsIgnoreCase(inputQuit))
+            {
+                Quit();
+            }
+
             if(OnlyDigits(hashmapIDint))
             {
                 if(!Hashinteract.employeeIDs.containsValue(Integer.parseInt(hashmapIDint)))
@@ -265,7 +290,7 @@ public class HashmapTest {
 
     static boolean OnlyDigits(String inputString)
     {
-       //How would you check if the input only has digits?
+       //How would you check if the input only has digits with no whitespace?
        if(Pattern.matches("[0-9]*\\S", inputString))
        {
             return true;
@@ -281,11 +306,16 @@ public class HashmapTest {
 
     static void ContainsKeyHashMap()
     {
-        System.out.printf("What name do you want to check for?%n");
+        System.out.printf("What name do you want to check for?%nPress Q to quit%n");
         String KeySearch = scannerInput.nextLine();
 
         while(true)
         {
+            if(KeySearch.equalsIgnoreCase(inputQuit))
+            {
+                Quit();
+            }
+
             if(Pattern.matches("[a-zA-Z]+\\S", KeySearch))
             {
                 System.out.printf("Specified employee name " + KeySearch.toUpperCase() + " exists: " + Hashinteract.employeeIDs.containsKey(KeySearch) + "%n");
@@ -301,12 +331,17 @@ public class HashmapTest {
 
     static void ContainsValueHashMap()
     {
-        System.out.println("What employee ID do you want to check if it exists?");
+        System.out.printf("What employee ID do you want to check if it exists?%nPress Q to quit%n");
         
         String ValueSearchString = scannerInput.nextLine();
 
         while(true)
         {
+            if(ValueSearchString.equalsIgnoreCase(inputQuit))
+            {
+                Quit();
+            }
+
             if(OnlyDigits(ValueSearchString))
             {
                 if(!Hashinteract.employeeIDs.containsValue(Integer.parseInt(ValueSearchString)))
@@ -322,7 +357,7 @@ public class HashmapTest {
             }
             else
             {                                               
-                System.out.printf("%nInput needs to be an int - Try again");
+                System.out.printf("%nInput needs to be an int - Try again%n");
                 ValueSearchString = scannerInput.nextLine();
             }
         }
@@ -332,7 +367,7 @@ public class HashmapTest {
     {                                   
         String removeEmployee = "";
 
-        System.out.println("\nWhich Employee shall be removed?\nType in an Employee name");
+        System.out.println("\nWhich Employee shall be removed?\nType in an Employee name\nPress Q to quit\n");
 
         removeEmployee = scannerInput.nextLine();
 
