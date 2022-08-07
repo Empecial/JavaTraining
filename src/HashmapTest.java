@@ -29,7 +29,8 @@ public class HashmapTest {
         
         scannerInput.useLocale(Locale.US);
         
-        System.out.printf("Welcome to the employee ID database for Aperture Science Labs Inc. Co. Trademark.%nCurrent hashmap of name " + hashmapName + " has the values " + Hashinteract.HashMapGet() + "%n");
+        System.out.printf("Welcome to the employee ID database for Aperture Science Labs Inc. Co. Trademark."
+        + "%nCurrent hashmap of name " + hashmapName + " has the values " + Hashinteract.HashMapGet() + "%nPress Q to exit modules%n");
         
         DisplayHelp();
 
@@ -283,7 +284,19 @@ public class HashmapTest {
         System.out.printf("What name do you want to check for?%n");
         String KeySearch = scannerInput.nextLine();
 
-        Hashinteract.HashMapContainsKey(KeySearch);
+        while(true)
+        {
+            if(Pattern.matches("[a-zA-Z]+\\S", KeySearch))
+            {
+                System.out.printf("Specified employee name " + KeySearch.toUpperCase() + " exists: " + Hashinteract.employeeIDs.containsKey(KeySearch) + "%n");
+                break;
+            }
+            else
+            {
+                System.out.printf("%nWrong input type - Acceptable input is string%nNo whitespace allowed%nTry again%n");
+                KeySearch = scannerInput.nextLine();
+            }
+        }
     }
 
     static void ContainsValueHashMap()
