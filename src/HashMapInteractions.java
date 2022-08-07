@@ -3,15 +3,6 @@ import java.util.HashMap;
 public class HashMapInteractions {
     
     HashMap<String,Integer> employeeIDs = new HashMap<>();
-    
-    public boolean HashMapCheckIfValueExists(String name)
-    {
-        if(employeeIDs.containsKey(name))
-            return false;
-
-        else
-            return true;
-    }
 
     public void HashMapPut(String name, String ID)
     {

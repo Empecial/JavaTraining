@@ -19,7 +19,6 @@ public class HashmapTest {
         static final String inputRemove = "rm";
         static final String inputQuit = "q";
         static String CurrentInput = "";
-        static final String[] acceptableinputs = {"r","p","s","ck","cv","c","ie","h","pr"};
 
         static Scanner scannerInput = new Scanner(System.in);
         
