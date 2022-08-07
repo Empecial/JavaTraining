@@ -46,7 +46,7 @@ public class HashmapTest {
     {
         while (true)
         {
-            System.out.print("Input: ");
+            System.out.printf("%nInput: ");
 
             CurrentInput = scannerInput.nextLine();
 
@@ -209,8 +209,8 @@ public class HashmapTest {
 
         while (true)
         {
-            //TODO make the line below check for whitespace
-            if(Pattern.matches("[a-zA-Z]+",hashmapName)) {
+            //Which regex pattern is needed for checking all the letters but no whitespaces?
+            if(Pattern.matches("[a-zA-Z]+\\S",hashmapName)) {
 
                 //How would you check if the specified name already exists in employeeIDs?
                 if(Hashinteract.employeeIDs.containsKey(hashmapName))
@@ -221,7 +221,7 @@ public class HashmapTest {
                  //How would you check if the specified name doesn't exist in employeeIDs?
                 else if(!Hashinteract.employeeIDs.containsKey(hashmapName))
                 {
-                    System.out.printf("%nCorrect input type - User doesn't already exist%n");
+                    System.out.printf("%nCorrect input type - User doesn't already exist%nContinuing to ID selection%n");
                     break;
                 }
             }
@@ -229,7 +229,7 @@ public class HashmapTest {
             //What should happen if the input isnt a string?
             else
             {
-                System.out.printf("%nWrong input type - Not a string%nTry again%n");
+                System.out.printf("%nWrong input type - Not a string%nCheck for whitespace%nTry again%n");
                 hashmapName = scannerInput.nextLine();
             }
         }
@@ -254,7 +254,7 @@ public class HashmapTest {
             }
             else
             {
-                System.out.printf("Wrong input type - Not an int%nTry again%n");
+                System.out.printf("Wrong input type - Not an int%nCheck for whitespace%nTry again%n");
                 hashmapIDint = scannerInput.nextLine();
             }            
         } 
@@ -265,7 +265,7 @@ public class HashmapTest {
     static boolean OnlyDigits(String inputString)
     {
        //How would you check if the input only has digits?
-       if(Pattern.matches("[0-9]+", inputString))
+       if(Pattern.matches("[0-9]*\\S", inputString))
        {
             return true;
        }

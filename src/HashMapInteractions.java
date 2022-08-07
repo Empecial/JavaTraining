@@ -18,6 +18,7 @@ public class HashMapInteractions {
         int IDint = Integer.parseInt(ID);
         
         employeeIDs.put(name, IDint);
+        System.out.printf("%nEmployee added to database. Welcome.%n");
     }
 
     public void HashMapReplaceValue(String name, String ReplaceValue)
