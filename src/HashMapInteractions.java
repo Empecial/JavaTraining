@@ -35,9 +35,9 @@ public class HashMapInteractions {
         return employeeIDs;
     }
     
-    public void HashMapContainsKey(String key)
+    public boolean HashMapContainsKey(String key)
     {
-        System.out.println(employeeIDs.containsKey(key));        
+        return employeeIDs.containsKey(key);        
     }
 
     public void HashMapIsempty()
