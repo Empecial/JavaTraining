@@ -145,7 +145,7 @@ public class HashmapTest {
                 Quit();
             }
 
-            if(Pattern.matches("[a-zA-Z+]+", employeeName))
+            if(Pattern.matches("[a-zA-Z]+\\S", employeeName))
             {
                 if(!Hashinteract.employeeIDs.containsKey(employeeName))
                 {
@@ -160,7 +160,7 @@ public class HashmapTest {
             }
             else
             {
-                System.out.printf("Input was not a string - Try again%n");
+                System.out.printf("Failure. Poissibly: Input was not a string - Whitespace in input - Try again%n");
                 employeeName = scannerInput.nextLine();
             }
         }
