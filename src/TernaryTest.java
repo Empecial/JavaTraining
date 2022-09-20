@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class TernaryTest {
 
@@ -6,12 +7,23 @@ public class TernaryTest {
     Scanner input = new Scanner(System.in);
 
     System.out.println("What is ur income per month from 0-200?");
-    int income = input.nextInt();
+
+    String income;
+    int incomeInt = 0;
+    income = input.nextLine();
+
+    //TODO
+    if(Pattern.matches("\\d+", income)) {
+      incomeInt = Integer.parseInt(income);
+    }
+    else {
+      System.out.println("Wrong input type -  income can only be digits");
+    }
 
     input.close();
 
-    String ClassRank = income > 120 ? "Highend" : "lowend";
-    String ClassRank2 = income <= 120 ? "lowend" : "Highend";
+    String ClassRank = incomeInt > 120 ? "Highend" : "lowend";
+    String ClassRank2 = incomeInt <= 120 ? "lowend" : "Highend";
 
     System.out.println(ClassRank);
 
