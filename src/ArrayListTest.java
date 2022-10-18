@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -13,6 +14,24 @@ public class ArrayListTest {
     public static void main(String[] args) {
         
         fillArrayListRandomly(randomIntArrayList);
+
+        printArrayList(randomIntArrayList);
+        
+
+    }
+
+    static void printArrayList(ArrayList<Integer> randomArrayList){
+
+        Iterator<Integer> iterator = randomIntArrayList.iterator();
+        
+        int i = 1;
+
+        while(iterator.hasNext()){
+
+            System.out.println("Number " + i + " has value: " + iterator.next());
+
+            i++;
+        }
 
     }
 
