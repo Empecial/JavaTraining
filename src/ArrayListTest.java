@@ -59,12 +59,12 @@ public class ArrayListTest {
             else {
                 System.out.println("Input wasnt a digit. try again");
             }
-                    }
+                }
     }
 
     static public void clearArray(ArrayList<Integer> arrayList){
         arrayList.clear();
 
-        System.out.println("Array has been cleared and left with " + arrayList);
+        System.out.println("ArrayList has been cleared. ArrayList currently has " + arrayList);
     }
 }
