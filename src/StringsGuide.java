@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class StringsGuide {
 
   public static void main(String[] args) throws Exception {
@@ -12,5 +14,6 @@ public class StringsGuide {
     String txt3 = "we are the so-called \"Vikings\" from the north";
 
     System.out.println(txt3);
+
   }
 }
