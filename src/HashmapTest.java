@@ -17,8 +17,8 @@ public class HashmapTest {
         static final String inputPrint = "pr";
         static final String inputGet = "g";
         static final String inputRemove = "rm";
+        static final String inputQuit = "q";
         static String CurrentInput = "";
-        static final String[] acceptableinputs = {"r","p","s","ck","cv","c","ie","h","pr"};
 
         static Scanner scannerInput = new Scanner(System.in);
         
@@ -28,7 +28,8 @@ public class HashmapTest {
         
         scannerInput.useLocale(Locale.US);
         
-        System.out.printf("Welcome to the employee ID database for Aperture Science Labs Inc. Co. Trademark.%nCurrent hashmap of name " + hashmapName + " has the values " + Hashinteract.HashMapGet() + "%n");
+        System.out.printf("Welcome to the employee ID database for Aperture Science Labs Inc. Co. Trademark."
+        + "%nCurrent hashmap of name " + hashmapName + " has the values " + Hashinteract.HashMapGet() + "%nPress Q to exit modules%n");
         
         DisplayHelp();
 
@@ -45,7 +46,7 @@ public class HashmapTest {
     {
         while (true)
         {
-            System.out.print("Input: ");
+            System.out.printf("%nInput: ");
 
             CurrentInput = scannerInput.nextLine();
 
@@ -95,8 +96,36 @@ public class HashmapTest {
         System.out.println("Which employee's ID number do you need?");
 
         String employeeNameForID = scannerInput.nextLine();
+        int IDfromEmployeeName;
 
-        int IDfromEmployeeName = Hashinteract.HashMapGetValue(employeeNameForID);
+        while(true)
+        {
+            if(employeeNameForID.equalsIgnoreCase(inputQuit))
+            {
+                Quit();
+            }
+
+            if(Pattern.matches("[a-zA-Z]+", employeeNameForID))
+            {
+                if(Hashinteract.employeeIDs.containsKey(employeeNameForID)) 
+                {
+                    IDfromEmployeeName = Hashinteract.HashMapGetValue(employeeNameForID);
+                    System.out.printf("Correct input type - string%n");
+                    System.out.printf("Employee exists - fetching%n");
+                    break;
+                }
+                else
+                {
+                    System.out.printf("Specified name doesn't exist in the hashmap - Try again%n");
+                    employeeNameForID = scannerInput.nextLine();
+                }
+            }
+            else
+            {
+                System.out.printf("Input was not a string. Try again%n");
+                employeeNameForID = scannerInput.nextLine();
+            }
+        }
 
         System.out.println("The employee - " + employeeNameForID.toUpperCase() + " - has the ID of " + IDfromEmployeeName);
     }
@@ -105,22 +134,35 @@ public class HashmapTest {
     {
         String employeeName = "";
         
-        System.out.printf("Enter an employee name%n");
+        System.out.printf("Enter an employee name. Press Q to quit%n");
 
         employeeName = scannerInput.nextLine();
         
         while(true)
         {
-            if(!Hashinteract.employeeIDs.containsKey(employeeName))
+            if(employeeName.equalsIgnoreCase(inputQuit))
             {
-                System.out.println("This user doesn't exist - Choose a new user");
-                employeeName = scannerInput.nextLine();
+                Quit();
             }
+
+            if(Pattern.matches("[a-zA-Z]+\\S", employeeName))
+            {
+                if(!Hashinteract.employeeIDs.containsKey(employeeName))
+                {
+                    System.out.println("This user doesn't exist - Choose a new user");
+                    employeeName = scannerInput.nextLine();
+                }
                 else
                 {
-                    System.out.println("User exists");
+                    System.out.println("\nUser exists\nContinuing\n");
                     break;
                 }
+            }
+            else
+            {
+                System.out.printf("Failure. Poissibly: Input was not a string - Whitespace in input - Try again%n");
+                employeeName = scannerInput.nextLine();
+            }
         }
                 String EmployeeIDReplace = "";
         
@@ -129,6 +171,11 @@ public class HashmapTest {
                 
                 while(true)
                 {
+                    if(EmployeeIDReplace.equalsIgnoreCase(inputQuit))
+                    {
+                        Quit();
+                    }
+
                     if(OnlyDigits(EmployeeIDReplace))
                     {
                         if(Hashinteract.employeeIDs.containsValue(Integer.parseInt(EmployeeIDReplace)))
@@ -136,17 +183,15 @@ public class HashmapTest {
                             System.out.println("This employee ID already exists - Choose a new ID");
                             EmployeeIDReplace = scannerInput.nextLine();
                         }
-
                         else
                         {
-                            System.out.println("Employee ID number changed");
+                            System.out.println("Employee ID changed");
                             break;
                         }
                     }
-
                     else
                     {
-                        System.out.println("Enter a valid ID - No strings allowed");
+                        System.out.println("Enter a valid ID - Integer values");
                         EmployeeIDReplace = scannerInput.nextLine();
                     }
                 }
@@ -174,13 +219,18 @@ public class HashmapTest {
     {
         String hashmapName;
         
-        System.out.printf("Enter an employee name%n");
+        System.out.printf("Enter an employee name. Press Q to quit%n");
         hashmapName = scannerInput.nextLine();
 
         while (true)
         {
-            //TODO make the line below check for whitespace
-            if(Pattern.matches("[a-zA-Z]+",hashmapName)) {
+            if(hashmapName.equalsIgnoreCase(inputQuit))
+            {
+                Quit();
+            }
+
+            //Which regex pattern is needed for checking all the letters but no whitespaces?
+            if(Pattern.matches("[a-zA-Z]+\\S",hashmapName)) {
 
                 //How would you check if the specified name already exists in employeeIDs?
                 if(Hashinteract.employeeIDs.containsKey(hashmapName))
@@ -191,7 +241,7 @@ public class HashmapTest {
                  //How would you check if the specified name doesn't exist in employeeIDs?
                 else if(!Hashinteract.employeeIDs.containsKey(hashmapName))
                 {
-                    System.out.printf("%nCorrect input type - User doesn't already exist%n");
+                    System.out.printf("%nCorrect input type - User doesn't already exist%nContinuing to ID selection%n");
                     break;
                 }
             }
@@ -199,7 +249,7 @@ public class HashmapTest {
             //What should happen if the input isnt a string?
             else
             {
-                System.out.printf("%nWrong input type - Not a string%nTry again%n");
+                System.out.printf("%nPossible problems: Wrong input type - Not a string%nCheck for whitespace%n2 letter minimum%nTry again%n");
                 hashmapName = scannerInput.nextLine();
             }
         }
@@ -209,6 +259,11 @@ public class HashmapTest {
 
         while(true)
         {
+            if(hashmapIDint.equalsIgnoreCase(inputQuit))
+            {
+                Quit();
+            }
+
             if(OnlyDigits(hashmapIDint))
             {
                 if(!Hashinteract.employeeIDs.containsValue(Integer.parseInt(hashmapIDint)))
@@ -224,7 +279,7 @@ public class HashmapTest {
             }
             else
             {
-                System.out.printf("Wrong input type - Not an int%nTry again%n");
+                System.out.printf("Wrong input type - Not an int%nCheck for whitespace%nTry again%n");
                 hashmapIDint = scannerInput.nextLine();
             }            
         } 
@@ -234,23 +289,8 @@ public class HashmapTest {
 
     static boolean OnlyDigits(String inputString)
     {
-    //     String regex = "[0-9]+";
-
-    //     Pattern inputPattern = Pattern.compile(regex);
-
-    //    //How do you check if the string is empty?
-    //    if(inputPattern == null)
-    //    {
-    //         return false;
-    //    }
-       
-       //How would you check if the input only has digits?
-       //Matcher inputMatcher = inputPattern.matcher(inputString);
-
-       //How would you display after checking if the string only has digits or not?
-       //return inputMatcher.matches();
-
-       if(Pattern.matches("[0-9]+", inputString))
+       //How would you check if the input only has digits with no whitespace?
+       if(Pattern.matches("[0-9]*\\S", inputString))
        {
             return true;
        }
@@ -260,38 +300,82 @@ public class HashmapTest {
 
     static void PrintCurrentHashMap()
     {
-        if(CurrentInput.equalsIgnoreCase(inputPrint))
-        {
-            System.out.println("current hashmap of " + hashmapName + " has the values " + Hashinteract.HashMapGet());
-        }
+        System.out.println("current hashmap " + hashmapName + " has the values " + Hashinteract.HashMapGet());
     }
 
     static void ContainsKeyHashMap()
     {
-        System.out.printf("What name do you want to check for?%n");
+        System.out.printf("What name do you want to check for?%nPress Q to quit%n");
         String KeySearch = scannerInput.nextLine();
 
-        Hashinteract.HashMapContainsKey(KeySearch);
+        while(true)
+        {
+            if(KeySearch.equalsIgnoreCase(inputQuit))
+            {
+                Quit();
+            }
+
+            if(Pattern.matches("[a-zA-Z]+\\S", KeySearch))
+            {
+                System.out.printf("Specified employee name " + KeySearch.toUpperCase() + " exists: " + Hashinteract.employeeIDs.containsKey(KeySearch) + "%n");
+                break;
+            }
+            else
+            {
+                System.out.printf("%nWrong input type - Acceptable input is string%nNo whitespace allowed%nTry again%n");
+                KeySearch = scannerInput.nextLine();
+            }
+        }
     }
 
     static void ContainsValueHashMap()
     {
-        System.out.println("What employee ID do you want to check if it exists?");
-        int ValueSearch = scannerInput.nextInt();
-
-        Hashinteract.HashMapContainsValue(ValueSearch);
-    }
-
-    static void RemoveHashMap()
-    {
-
-        String removeEmployee = "";
+        System.out.printf("What employee ID do you want to check if it exists?%nPress Q to quit%n");
+        
+        String ValueSearchString = scannerInput.nextLine();
 
         while(true)
         {
-            System.out.println("Which Employee shall be removed?\nType in an Employee name");
+            if(ValueSearchString.equalsIgnoreCase(inputQuit))
+            {
+                Quit();
+            }
 
-            removeEmployee = scannerInput.nextLine();
+            if(OnlyDigits(ValueSearchString))
+            {
+                if(!Hashinteract.employeeIDs.containsValue(Integer.parseInt(ValueSearchString)))
+                {
+                    System.out.printf("%nSpecified employee ID doesn't exist%nCurrent ID's are:" + Hashinteract.employeeIDs.values() + "%nTry again%n");
+                    ValueSearchString = scannerInput.nextLine();
+                }
+                else
+                {
+                    System.out.printf("%nCorrect input - ID exists: True");
+                    break;
+                }
+            }
+            else
+            {                                               
+                System.out.printf("%nInput needs to be an int - Try again%n");
+                ValueSearchString = scannerInput.nextLine();
+            }
+        }
+    }
+
+    static void RemoveHashMap()
+    {                                   
+        String removeEmployee = "";
+
+        System.out.println("\nWhich Employee shall be removed?\nType in an Employee name\nPress Q to quit\n");
+
+        removeEmployee = scannerInput.nextLine();
+
+        while(true)
+        {
+            if(removeEmployee.equalsIgnoreCase(inputQuit))
+            {
+                Quit();
+            }
 
             if(Pattern.matches("[a-zA-Z]+", removeEmployee))
             {
@@ -302,16 +386,22 @@ public class HashmapTest {
                 }
                 else
                 {
-                    System.out.println("Specified employee does not exist\nEnter new employee name");
+                    System.out.println("\nSpecified employee does not exist\nEnter new employee name");
                     removeEmployee = scannerInput.nextLine();
                 }
             }
             else
             {
-                System.out.println("Specified employee name is not valid - Only strings");
+                System.out.println("\nSpecified employee name is not valid - Only strings");
                 removeEmployee = scannerInput.nextLine();
             }
         }
         Hashinteract.HashMapRemove(removeEmployee);
+    }
+
+    static void Quit()
+    {
+        System.out.printf("%nQuitting to Home...%n");
+        Home();
     }
 }

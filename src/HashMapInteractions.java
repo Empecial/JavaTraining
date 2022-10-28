@@ -3,21 +3,13 @@ import java.util.HashMap;
 public class HashMapInteractions {
     
     HashMap<String,Integer> employeeIDs = new HashMap<>();
-    
-    public boolean HashMapCheckIfValueExists(String name)
-    {
-        if(employeeIDs.containsKey(name))
-            return false;
-
-        else
-            return true;
-    }
 
     public void HashMapPut(String name, String ID)
     {
         int IDint = Integer.parseInt(ID);
         
         employeeIDs.put(name, IDint);
+        System.out.printf("%nEmployee added to database. Welcome.%n");
     }
 
     public void HashMapReplaceValue(String name, String ReplaceValue)
@@ -34,18 +26,9 @@ public class HashMapInteractions {
         return employeeIDs;
     }
     
-    public void HashMapContainsKey(String key)
+    public boolean HashMapContainsKey(String key)
     {
-        System.out.println(employeeIDs.containsKey(key));        
-    }
-
-    public void HashMapContainsValue(int value)
-    {
-        if(employeeIDs.containsValue(value))
-            System.out.println("Specified employee ID exists");
-        
-        else
-            System.out.println("Specified employee ID doesn't exist");
+        return employeeIDs.containsKey(key);        
     }
 
     public void HashMapIsempty()
