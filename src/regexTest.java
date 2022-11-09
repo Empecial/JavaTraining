@@ -7,9 +7,16 @@ public class regexTest {
         String multiLetterCheck = "\\w+";
 
         if(Pattern.matches(singleLetterCheck, "n")){
+
             System.out.println("input string has only 1 letter");
-        } else if(Pattern.matches("\\w+", "nice")){
+
+        } if(Pattern.matches(multiLetterCheck, "nice")){
+
             System.out.println("input string has more than 1 letter");
+
+        } if(singleLetterCheck.equals("\\w")){
+
+            System.out.println("test3");
         }
     }
 }
