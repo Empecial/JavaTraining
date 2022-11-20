@@ -26,13 +26,15 @@ public class ArrayListTest {
         
         int i = 1;
 
+        int index = i--;
+
+
         while(iterator.hasNext()){
 
-            System.out.println("Number " + i + " has value: " + iterator.next());
+            System.out.println("Index " + i + " has value: " + iterator.next());
 
             i++;
         }
-
     }
 
     static public void fillArrayListRandomly(ArrayList<Integer> randomArrayList){
@@ -58,11 +60,12 @@ public class ArrayListTest {
             } 
             else {
                 System.out.println("Input wasnt a digit. try again");
+                 }
             }
-                }
-    }
+        }
 
     static public void clearArray(ArrayList<Integer> arrayList){
+
         arrayList.clear();
 
         System.out.println("ArrayList has been cleared. ArrayList currently has " + arrayList);
