@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public class ArrayListTest {
 
     static ArrayList<Integer> randomIntArrayList = new ArrayList<Integer>();
+    
     static Random rand = new Random();
 
     static Scanner input = new Scanner(System.in);
@@ -16,8 +17,6 @@ public class ArrayListTest {
         fillArrayListRandomly(randomIntArrayList);
 
         printArrayList(randomIntArrayList);
-        
-
     }
 
     static void printArrayList(ArrayList<Integer> randomArrayList){
@@ -28,11 +27,10 @@ public class ArrayListTest {
 
         while(iterator.hasNext()){
 
-            System.out.println("Number " + i + " has value: " + iterator.next());
+            System.out.println("Index " + i + " has value: " + iterator.next());
 
             i++;
         }
-
     }
 
     static public void fillArrayListRandomly(ArrayList<Integer> randomArrayList){

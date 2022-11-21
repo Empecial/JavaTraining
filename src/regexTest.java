@@ -1,15 +1,14 @@
+import java.util.ArrayList;
+
 public class regexTest {
     public static void main(String[] args) {
-        
-        String lettersCheck = "\\w";
 
-        
+        ArrayList<Integer> arrayListInts = new ArrayList<>();
 
-String helloworld = "…././.-../.-../---//.--/---/.-./.-../-.";
 
-        for (int i = 0; i < helloworld.length(); i++) {
+        for (int i = 0; i < arrayListInts.size(); i++) {
+
         }
-
 
     }
 }
