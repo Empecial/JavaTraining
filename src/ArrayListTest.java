@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public class ArrayListTest {
 
     static ArrayList<Integer> randomIntArrayList = new ArrayList<Integer>();
+    
     static Random rand = new Random();
 
     static Scanner input = new Scanner(System.in);
@@ -16,8 +17,6 @@ public class ArrayListTest {
         fillArrayListRandomly(randomIntArrayList);
 
         printArrayList(randomIntArrayList);
-        
-
     }
 
     static void printArrayList(ArrayList<Integer> randomArrayList){
